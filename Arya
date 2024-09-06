@@ -1,0 +1,62 @@
+import random
+import time
+
+class Pacar:
+    def __init__(self, nama, mood):
+        self.nama = nama
+        self.mood = mood
+
+    def cek_mood(self):
+        mood_responses = {
+            'bahagia': f"{self.nama} tersenyum dan berkata, 'Aku cinta kamu!' 😍",
+            'marah': f"{self.nama} diam saja, seakan-akan kamu adalah hantu... 👻",
+            'sedih': f"{self.nama} menatap keluar jendela dengan tatapan kosong. Kamu tahu ini bukan hari yang baik... 😢",
+            'lapar': f"{self.nama} tiba-tiba berkata, 'Kamu nggak ngerti ya? Aku lapar!' 🍔",
+            'bingung': f"{self.nama} berkata, 'Kenapa kamu tanya? Aku juga nggak tau... 🤔'"
+        }
+        return mood_responses[self.mood]
+
+class SimulatorHubungan:
+    def __init__(self, pacar):
+        self.pacar = pacar
+
+    def ajak_ngobrol(self):
+        print(f"Kamu: 'Hai, {self.pacar.nama}, gimana kabarmu hari ini?'")
+        time.sleep(1)
+        print(f"{self.pacar.nama}: '{self.pacar.cek_mood()}'")
+
+    def coba_mengerti(self):
+        print("Kamu mencoba mengerti perasaannya...")
+        time.sleep(1)
+        if self.pacar.mood == 'bahagia':
+            print("Berhasil! Kamu mengerti dia dengan sangat baik! 😄")
+        else:
+            print("Sayang sekali, sepertinya kamu perlu mencoba lebih keras... 😅")
+
+    def ubah_mood(self):
+        moods = ['bahagia', 'marah', 'sedih', 'lapar', 'bingung']
+        self.pacar.mood = random.choice(moods)
+        print(f"Mood {self.pacar.nama} tiba-tiba berubah menjadi {self.pacar.mood}!")
+
+# Simulasi hubungan
+pacar_gendis = Pacar("Gendis", "bahagia")
+simulasi = SimulatorHubungan(pacar_gendis)
+
+# Ajakan ngobrol
+simulasi.ajak_ngobrol()
+time.sleep(2)
+
+# Coba mengerti mood pacar
+simulasi.coba_mengerti()
+time.sleep(2)
+
+# Tiba-tiba mood pacar berubah
+simulasi.ubah_mood()
+time.sleep(2)
+
+# Ajak ngobrol lagi setelah mood berubah
+simulasi.ajak_ngobrol()
+time.sleep(2)
+
+# Coba mengerti lagi
+simulasi.coba_mengerti()
